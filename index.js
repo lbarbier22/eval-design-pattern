@@ -6,18 +6,14 @@ import ThermalSensorB from "./Sensor/ThermalSensorB.js";
 import TemperatureSensorA from "./Sensor/TemperatureSensorA.js";
 import NotificationFactory from "./Notification/NotificationFactory.js";
 
-const camera = new SensorAAdapter(new CameraA('Salon'));
-const temp = new SensorAAdapter(new TemperatureSensorA('Salon', 50));
-const thermal = new ThermalBAdapter(new ThermalSensorB(1));
+const salon = new Room('Salon', 1);
 
-const salon = new Room('Salon');
+const camera = salon.addCamera();
+const temp = salon.addTemperature(50);
+const thermal = salon.addThermal();
 
-salon.addSensor(camera);
-salon.addSensor(temp);
-salon.addSensor(thermal);
-
-salon.addNotifier(NotificationFactory.create('email', 'admin@safehome.com'));
-salon.addNotifier(NotificationFactory.create('log', 'safehome.log'));
+salon.addNotifier(NotificationFactory.create('email', 'email@gmal.com'));
+salon.addNotifier(NotificationFactory.create('log', 'log.txt'));
 salon.addNotifier(NotificationFactory.create('discord', '#alertes'));
 
 // camera.trigger();
