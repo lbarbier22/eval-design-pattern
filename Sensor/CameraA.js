@@ -4,6 +4,6 @@ export default class CameraA {
     }
 
     onDetect(callback) {
-        callback("Oulala je vois une personne je crois");
+        callback("Oulala I saw someone I think");
     }
 }

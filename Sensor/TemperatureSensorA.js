@@ -5,6 +5,6 @@ export default class TemperatureSensorA {
     }
 
     onDetect(callback) {
-        callback("Température capté ici");
+        callback("Temperature hit here");
     }
 }

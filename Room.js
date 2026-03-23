@@ -9,7 +9,7 @@ export default class Room {
     constructor(name, id) {
         this.name = name;
         this.id = id;
-        this.notifierList = [];
+        this.callbackList = [];
     }
 
     addCamera() {
@@ -31,12 +31,12 @@ export default class Room {
     }
 
     addNotifier(notifier) {
-        this.notifierList.push(notifier);
+        this.callbackList.push(notifier);
     }
 
     onDetect({ message }) {
         console.log("[" + this.name + "]");
-        for (let notifier of this.notifierList) {
+        for (let notifier of this.callbackList) {
             notifier.send(message);
         }
     }
