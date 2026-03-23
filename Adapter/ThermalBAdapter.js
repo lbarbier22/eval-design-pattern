@@ -2,12 +2,20 @@ export default class ThermalBAdapter {
     
     constructor(sensor) { 
         this.sensor = sensor;
+        this.callbackList = [];
     }
-    
-    onDetect(callback) {
+
+    trigger() {
         this.sensor.triggerHeatSignature((rawJson) => {
             const data = JSON.parse(rawJson);
-            callback(data.detection+" | J'ai senti qql'n à "+data.date);
+            const message = `[${data.detection}] ${data.sensor} — ${data.date}`;
+            for (let event of this.callbackList.filter(e => e.event === 'detect')) {
+                event.callback({ message, sensor: this });
+            }
         });
+    }
+
+    addEvent(event, callback) {
+        this.callbackList.push({ event, callback });
     }
 }
