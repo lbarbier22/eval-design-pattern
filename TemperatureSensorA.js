@@ -1,7 +1,10 @@
-class TemperatureSensorA {
-    constructor(location, threshold) {} // location = nom de la pièce, threshold = température de déclenchement
-    onDetect(callback) {
-        console.log("Capteur température ici : "+location);
+export default class TemperatureSensorA {
+    constructor(location, threshold) {
+        this.location = location;
+        this.threshold = threshold;
+    }
 
-    } // Déclenche un message d’alerte (string)
+    onDetect(callback) {
+        callback("Température capté ici");
+    }
 }

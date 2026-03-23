@@ -1,15 +1,16 @@
-class ThermalSensorB {
-    constructor(position) {} // position = id de la pièce
-    triggerHeatSignature(process) {
+export default class ThermalSensorB {
 
-    } // Déclenche une donnée complexe json, voir ci dessous
+    constructor(position) {
+        this.position = position;
+    }
+
+    triggerHeatSignature(process) {
+        process(JSON.stringify({
+            sensor: this.position,
+            detection: 'thermal',
+            date: new Date().toISOString(),
+        }));
+    }
 }
 
 
-
-// Le format de retour pour le capteur B est en json :
-// {
-//     "sensor" : "<name>",
-//     "detection" : "<detection type>", // "thermal" pour le capteur que nous utilisons
-//     "date":"<current date and time>"
-// }

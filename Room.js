@@ -1,12 +1,14 @@
 export default class Room {
 
-    constructor(name, id) {
+    constructor(name) {
             this.name = name;
-            this.id = id;
             this.sensors= [];
     }
 
     addSensor(adapter) {
+        adapter.onDetect((message) => {
+            console.log("["+this.name+"] : "+message);
+        });
         this.sensors.push(adapter);
     }
 }

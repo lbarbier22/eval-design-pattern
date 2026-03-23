@@ -4,6 +4,6 @@ export default class CameraA {
     }
 
     onDetect(callback) {
-        console.log("Oulala je vois une personne je crois : " + this.location);
-    } // Déclenche un message d’alerte (string)
+        callback("Oulala je vois une personne je crois");
+    }
 }
