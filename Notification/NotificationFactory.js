@@ -8,7 +8,7 @@ export default class NotificationFactory {
         if (type === 'email') return new EmailNotification(config);
         if (type === 'log') return new LogNotification(config);
         if (type === 'discord') return new DiscordNotification(config);
-        throw new Error("Type inconnu : "+type);
+        throw new Error("Unknown type : "+type);
     }
 
 }
